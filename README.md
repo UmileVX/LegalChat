@@ -39,7 +39,18 @@ cd legalgpt/backend
 
 # install dependencies into poetry's venv
 poetry install
+```
 
+Before start the inference service, we need to generate the DB first:
+
+```sh
+# run the ingestion service
+poetry run python3 generate.py
+```
+
+Now, run the inference service:
+
+```sh
 # run app with poetry's venv
 poetry run python3 main.py
 ```
