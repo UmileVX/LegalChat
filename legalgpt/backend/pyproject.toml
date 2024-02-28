@@ -1,9 +1,9 @@
 [tool]
 [tool.poetry]
-name = "app"
+name = "legal-gpt"
 version = "0.1.0"
 description = ""
-authors = [ "Marcus Schiesser <mail@marcusschiesser.de>" ]
+authors = [ "Yeonwoo Sung <neos960518@gmail.com>" ]
 readme = "README.md"
 
 [tool.poetry.dependencies]
