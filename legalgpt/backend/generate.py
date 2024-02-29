@@ -41,7 +41,7 @@ def generate_datasource_milvus(embed_model):
             overwrite=True, # mandatory for new collection creation 
         )
 
-        # Create StorageContext 
+        # Create StorageContext
         storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
         # create the sentence window node parser
@@ -81,7 +81,7 @@ if __name__ == "__main__":
 
     use_milvus = os.getenv("USE_MILVUS", "false").lower() == "true"
     if use_milvus:
-        embed_model=OpenAIEmbedding(model="text-embedding-ada-002")
+        embed_model=OpenAIEmbedding(model="text-embedding-3-large", embed_batch_size=100)  # noqa: E501
         generate_datasource_milvus(embed_model)
     else:
         generate_datasource()
