@@ -33,7 +33,12 @@ class MyAgent(MyBaseAgent):
     
     user_toxicity  : float = 0.5
     user_emotion   : str = "Unknown"
-    
+
+    # def __init__(self, **kwargs):
+    #     super().__init__(**kwargs)
+    #     self.gen_kw = {k:v for k,v in kwargs.items() if k in self.gen_kw_keys}
+    #     if not self.general_chain:
+    #         self.general_chain = LLMChain(llm=self.llm, prompt=self.general_prompt)
 
     # @root_validator
     def validate_input(cls, values: Any) -> Any:
@@ -68,12 +73,13 @@ class MyAgent(MyBaseAgent):
             return self.action(tool, response, finish=True)
 
         ## [Default Case] If observation is provided and you want to respond... do it!
-        with SetParams(self.llm, **self.gen_kw):
-            response = self.general_chain.run(last_obs)
+        # with SetParams(self.llm, **self.gen_kw):
+        #     response = self.general_chain.run(last_obs)
+        response = self.general_chain.run(last_obs)
 
         ## [!] Probably a good spot for your output-postprocessing steps
         response = response.replace("```", "")
-        
+
         ## [Default Case] Send over the response back to the user and get their input!
         return self.action(tool, response)
     

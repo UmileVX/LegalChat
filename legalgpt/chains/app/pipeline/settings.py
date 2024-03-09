@@ -7,7 +7,7 @@ class SetParams:
         self.pipeline = my_llm.pipeline
         self._old_params = {**self.pipeline._forward_params}
         self._new_params = new_params
-    
+
     def __enter__(self):
         self.pipeline._forward_params.update(**self._new_params)
 
