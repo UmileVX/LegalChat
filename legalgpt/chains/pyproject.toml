@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "legalgpt-chains"
+version = "0.1.0"
+description = ""
+authors = ["YeonwooSung <neos960518@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+langchain = "^0.1.11"
+tiktoken = "^0.6.0"
+langchain-openai = "^0.0.8"
+langchain-community = "^0.0.27"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
