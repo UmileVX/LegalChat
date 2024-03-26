@@ -1,5 +1,5 @@
 import streamlit as st #모든 Streamlit 명령은 "st" 별칭을 통해 사용할 수 있습니다.
-import rag_chatbot_lib_kr as glib #로컬 라이브러리 스크립트에 대한 참조
+import rag_chatbot_lib as glib #로컬 라이브러리 스크립트에 대한 참조
 
 st.set_page_config(page_title="RAG Chatbot") #HTML 제목
 st.title("RAG Chatbot") #페이지 제목 
