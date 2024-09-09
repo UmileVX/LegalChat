@@ -16,7 +16,7 @@ postgres=# CREATE EXTENSION vector;
 After set up the DB, you need to add the `.env` file.
 
 ```sh
-cd legalgpt/backend
+cd server
 
 # copy the .env.template
 cp .env.template .env
@@ -35,7 +35,7 @@ PG_CONNECTION_STRING=
 For dependency management, LegalGPT uses `poetry`:
 
 ```sh
-cd legalgpt/backend
+cd server
 
 # install dependencies into poetry's venv
 poetry install
@@ -62,7 +62,7 @@ We currently use python3.10 and python3.11, thus, please make sure that you use 
 Follow the instructions below:
 
 ```sh
-cd legalgpt/frontend
+cd frontend
 
 # make the .env file
 cp .env.template .env

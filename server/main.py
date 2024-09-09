@@ -7,6 +7,8 @@ import os
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+# custom modules
 from app.api.routers.chat import chat_router
 from app.settings import init_settings
 
