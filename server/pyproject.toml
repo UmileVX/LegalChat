@@ -1,6 +1,6 @@
 [tool]
 [tool.poetry]
-name = "legal-gpt"
+name = "legal-chat"
 version = "0.1.1"
 description = ""
 authors = [ "Yeonwoo Sung <neos960518@gmail.com>" ]
