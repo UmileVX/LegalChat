@@ -9,7 +9,7 @@
     "generate": "node app/api/chat/engine/generate.mjs"
   },
   "dependencies": {
-    "ai": "^2.2.27",
+    "ai": "^4.0.13",
     "dotenv": "^16.3.1",
     "llamaindex": "0.1.12",
     "next": "^14.2.10",
