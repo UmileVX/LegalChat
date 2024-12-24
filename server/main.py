@@ -2,7 +2,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-import logging
 import os
 import uvicorn
 from fastapi import FastAPI
@@ -11,9 +10,11 @@ from fastapi.middleware.cors import CORSMiddleware
 # custom modules
 from app.api.chat.router import chat_router
 from app.settings import init_settings
+from app.utils.logging import Logger
 
 
 app = FastAPI()
+logger = Logger()
 
 init_settings()
 
@@ -24,8 +25,7 @@ if environment not in {"dev", "prod"}:
 
 
 if environment == "dev":
-    logger = logging.getLogger("uvicorn")
-    logger.warning("Running in development mode - allowing CORS for all origins")
+    logger.log_warning("Running in development mode - allowing CORS for all origins")
     app.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
