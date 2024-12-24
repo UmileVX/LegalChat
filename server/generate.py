@@ -1,5 +1,6 @@
-import os
-
+from llama_index.core.indices import VectorStoreIndex
+from llama_index.core.node_parser import SentenceWindowNodeParser
+from llama_index.core.storage import StorageContext
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -9,9 +10,6 @@ import logging
 from app.engine.loader import get_documents
 from app.engine.utils import init_pg_vector_store_from_env
 from app.settings import init_settings
-from llama_index.core.indices import VectorStoreIndex
-from llama_index.core.node_parser import SentenceWindowNodeParser
-from llama_index.core.storage import StorageContext
 
 
 # set up logging
