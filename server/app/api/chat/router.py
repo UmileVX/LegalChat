@@ -1,52 +1,47 @@
-from fastapi.responses import StreamingResponse
-from fastapi import APIRouter, Depends, HTTPException, Request, status
+from fastapi import APIRouter, Depends, HTTPException, Request, status, BackgroundTasks
 from llama_index.core.chat_engine.types import BaseChatEngine
-from llama_index.core.llms import ChatMessage, MessageRole
-from app.engine import get_chat_engine
 
 # custom modules
-from .schema import ChatData
+from app.engine import get_chat_engine, get_custom_chat_engine
+from app.engine.query_filter import generate_filters
+from app.utils.logging import Logger
+from app.utils.events import EventCallbackHandler
+
+from .response import LegalChatStreamResponse
+from .model import ChatData
 
 
 chat_router = r = APIRouter()
+logger = Logger()
 
 
 @r.post("")
 async def chat(
     request: Request,
     data: ChatData,
-    chat_engine: BaseChatEngine = Depends(get_chat_engine),
+    background_tasks: BackgroundTasks,
+    # chat_engine: BaseChatEngine = Depends(get_chat_engine),
 ):
-    # check preconditions and get last message
-    if len(data.messages) == 0:
+    try:
+        last_message_content = data.get_last_message_content()
+        messages = data.get_history_messages()
+
+        doc_ids = data.get_chat_document_ids()
+        filters = generate_filters(doc_ids)
+        params = data.data or {}
+        logger.log_info(
+            f"Creating chat engine with filters: {str(filters)}",
+        )
+        event_handler = EventCallbackHandler()
+        chat_engine = get_custom_chat_engine(last_message_content, messages, verbose=False)
+        response = chat_engine.astream_chat(last_message_content, messages)
+
+        return LegalChatStreamResponse(
+            request, event_handler, response, data, background_tasks
+        )
+    except Exception as e:
+        logger.log_error("Error in chat engine", exc_info=True)
         raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="No messages provided",
-        )
-    lastMessage = data.messages.pop()
-    if lastMessage.role != MessageRole.USER:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Last message must be from user",
-        )
-    # convert messages coming from the request to type ChatMessage
-    messages = [
-        ChatMessage(
-            role=m.role,
-            content=m.content,
-        )
-        for m in data.messages
-    ]
-
-    # query chat engine
-    response = await chat_engine.astream_chat(lastMessage.content, messages)
-
-    # stream response
-    async def event_generator():
-        async for token in response.async_response_gen():
-            # If client closes connection, stop sending events
-            if await request.is_disconnected():
-                break
-            yield token
-
-    return StreamingResponse(event_generator(), media_type="text/plain")
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Error in chat engine: {e}",
+        ) from e

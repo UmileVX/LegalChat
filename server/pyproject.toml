@@ -1,7 +1,7 @@
 [tool]
 [tool.poetry]
 name = "legal-chat"
-version = "0.1.2"
+version = "0.2.0"
 description = ""
 authors = [ "Yeonwoo Sung <neos960518@gmail.com>" ]
 readme = "README.md"
@@ -12,6 +12,8 @@ fastapi = "^0.115.6"
 python-dotenv = "^1.0.0"
 llama-index = "^0.12.8"
 llama-index-vector-stores-postgres = "^0.4.1"
+aiostream = "^0.6.4"
+python-multipart = "^0.0.20"
 
 [tool.poetry.dependencies.uvicorn]
 extras = [ "standard" ]

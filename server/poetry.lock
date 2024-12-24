@@ -124,6 +124,23 @@ files = [
 frozenlist = ">=1.1.0"
 
 [[package]]
+name = "aiostream"
+version = "0.6.4"
+description = "Generator-based operators for asynchronous iteration"
+optional = false
+python-versions = ">=3.9"
+files = [
+    {file = "aiostream-0.6.4-py3-none-any.whl", hash = "sha256:bd8c6a8b90a52c0325a3b19406f0f2a131448e596c06398886f5be1c73b4cea9"},
+    {file = "aiostream-0.6.4.tar.gz", hash = "sha256:f99bc6b1b9cea3e70885dc235a233523597555fe4a585ed21d65264b3f1ff3d2"},
+]
+
+[package.dependencies]
+typing-extensions = "*"
+
+[package.extras]
+dev = ["pytest", "pytest-asyncio", "pytest-cov"]
+
+[[package]]
 name = "annotated-types"
 version = "0.7.0"
 description = "Reusable constraint types to use with typing.Annotated"
@@ -2080,6 +2097,17 @@ files = [
 cli = ["click (>=5.0)"]
 
 [[package]]
+name = "python-multipart"
+version = "0.0.20"
+description = "A streaming multipart parser for Python"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "python_multipart-0.0.20-py3-none-any.whl", hash = "sha256:8a62d3a8335e06589fe01f2a3e178cdcc632f3fbe0d492ad9ee0ec35aab1f104"},
+    {file = "python_multipart-0.0.20.tar.gz", hash = "sha256:8dd0cab45b8e23064ae09147625994d090fa46f5b0d1e13af944c331a7fa9d13"},
+]
+
+[[package]]
 name = "pytz"
 version = "2024.2"
 description = "World timezone definitions, modern and historical"
@@ -2980,4 +3008,4 @@ propcache = ">=0.2.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.13"
-content-hash = "98f7953c8de53bc1b6dbef7bbb3b89ec9a5fe199acc3cd38b7c788400eb3b1c3"
+content-hash = "98661da7b2d90c71f8bccf1f9620c0a1cb281f3a22d74cb70c1529c116c56fde"
