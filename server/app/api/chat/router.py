@@ -5,7 +5,7 @@ from llama_index.core.llms import ChatMessage, MessageRole
 from app.engine import get_chat_engine
 
 # custom modules
-from .schema import ChatData, ChatMessage
+from .schema import ChatData
 
 
 chat_router = r = APIRouter()
