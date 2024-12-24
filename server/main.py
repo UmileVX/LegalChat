@@ -9,7 +9,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 # custom modules
-from app.api.routers.chat import chat_router
+from app.api.chat.router import chat_router
 from app.settings import init_settings
 
 
@@ -17,7 +17,10 @@ app = FastAPI()
 
 init_settings()
 
-environment = os.getenv("ENVIRONMENT", "dev")  # Default to 'development' if not set
+# Default to 'dev' (development) if not set
+environment = os.getenv("ENVIRONMENT", "dev")
+if environment not in {"dev", "prod"}:
+    environment = "dev"
 
 
 if environment == "dev":
