@@ -33,3 +33,7 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO sales_team;
 -- assign role to user
 GRANT sales_team TO sales_example_user;
 ```
+
+## Referenes
+
+- [Creating user, database and adding access on PostgreSQL](https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e)
