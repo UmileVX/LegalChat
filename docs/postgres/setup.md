@@ -34,6 +34,16 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO sales_team;
 GRANT sales_team TO sales_example_user;
 ```
 
+## List all of the tables in schema
+
+```sql
+-- list all tables of all schemas
+\dt *.*
+
+-- list all tables of public schema
+\dt public.*
+```
+
 ## Referenes
 
 - [Creating user, database and adding access on PostgreSQL](https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e)
