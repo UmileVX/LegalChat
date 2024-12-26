@@ -1,4 +1,4 @@
-import json
+import orjson
 import logging
 from typing import Awaitable, List
 
@@ -136,20 +136,21 @@ class LegalChatStreamResponse(StreamingResponse):
         # the text_generator is the leading stream, once it's finished, also finish the event stream
         event_handler.is_done = True
 
+
     @classmethod
     def convert_text(cls, token: str):
         # Escape newlines and double quotes to avoid breaking the stream
-        token = json.dumps(token)
+        token = orjson.dumps(token).decode("utf-8")
         return f"{cls.TEXT_PREFIX}{token}\n"
 
     @classmethod
     def convert_data(cls, data: dict):
-        data_str = json.dumps(data)
+        data_str = orjson.dumps(data).decode("utf-8")
         return f"{cls.DATA_PREFIX}[{data_str}]\n"
 
     @classmethod
     def convert_error(cls, error: str):
-        error_str = json.dumps(error)
+        error_str = orjson.dumps(error).decode("utf-8")
         return f"{cls.ERROR_PREFIX}{error_str}\n"
 
     @staticmethod

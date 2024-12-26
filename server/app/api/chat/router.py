@@ -28,7 +28,6 @@ async def chat(
 
         doc_ids = data.get_chat_document_ids()
         filters = generate_filters(doc_ids)
-        params = data.data or {}
         logger.log_info(
             f"Creating chat engine with filters: {str(filters)}",
         )
