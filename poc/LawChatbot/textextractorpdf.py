@@ -270,14 +270,47 @@ for filename in file :
 #************************PostgreSQL DB에 Insert하는 코드 *********************************8
 
 import psycopg2 #PostgreSQL DB와 연결하기 위해 psycopg2 외부 라이브러리 사용
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+usr = os.getenv("USER", None)
+pw = os.getenv("PW", None)
+if usr is None or pw is None:
+  raise ValueError("usr or pw is None!!")
+
 try:
     #table_name = {'중대재해처벌법':'DisasterAct', '산업안전보건법시행령':'EnforDecree', '산업안전보건법시행규칙':'EnforRule', '산업안전보건법':'IndusAct', '안전보건규칙':'Regulation'}
     table_name = 'each_paragraph'
-    conn = psycopg2.connect(host='localhost', dbname='law', user='user1', password='1234', port=5432)
+    conn = psycopg2.connect(host='localhost', dbname='sihm', user=usr, password=pw, port=5432)
     cursor = conn.cursor()
+
+    sql_for_create_table = f"""CREATE TABLE IF NOT EXISTS sihm.{table_name} (
+      id integer NOT NULL,
+      name character varying(32) NOT NULL,
+      part_num character varying(20),
+      part_name character varying(128),
+      chap_num character varying(20),
+      char_name character varying(100),
+      sec_num character varying(20),
+      sec_name character varying(100),
+      para_num character varying(20),
+      para_name character varying(64),
+      art_num character varying(20) NOT NULL,
+      art_name character varying(128) NOT NULL,
+      content text NOT NULL,
+      embedding vector
+    );"""
+    cursor.execute(sql_for_create_table)
+    conn.commit()
+
+    conn = psycopg2.connect(host='localhost', dbname='sihm', user=usr, password=pw, port=5432)
+    cursor = conn.cursor()
+
     for current in listForDB:
       args_str = ", ".join([cursor.mogrify('(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', row).decode('utf-8') for row in current])
-      sql = "INSERT INTO public.{table}(name,part_num, part_name, chap_num, char_name, sec_num, sec_name, para_num, para_name, art_num, art_name, content) VALUES {data};".format(data=args_str,table=table_name)
+      sql = "INSERT INTO sihm.{table}(name,part_num, part_name, chap_num, char_name, sec_num, sec_name, para_num, para_name, art_num, art_name, content) VALUES {data};".format(data=args_str,table=table_name)
       try:
           cursor.execute(sql)
       except Exception as e:
