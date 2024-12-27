@@ -4,67 +4,79 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 47.4% 11.2%;
+    /* 배경/전경 */
+    --background: 0 0% 100%; /* 완전 흰색 */
+    --foreground: 222.2 47.4% 11.2%; /* 거의 검정(짙은 회색) */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* 서브 배경 & 폰트(예: 비활성, 입력창 배경 등) */
+    --muted: 210 15% 97%; 
+    --muted-foreground: 215 10% 30%;
 
+    /* 팝오버(툴팁 등) */
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 47.4% 11.2%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    /* 테두리/입력창 배경 */
+    --border: 210 10% 90%;
+    --input: 210 10% 90%;
 
+    /* 카드 */
     --card: 0 0% 100%;
     --card-foreground: 222.2 47.4% 11.2%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* 주요 브랜드/포인트 컬러 (녹색) */
+    --primary: 147 90% 35%; 
+    --primary-foreground: 0 0% 100%; /* 흰색 폰트 */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* 보조 색상 */
+    --secondary: 145 45% 42%; 
+    --secondary-foreground: 0 0% 100%; /* 흰색 폰트 */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* 강조 색상(필요 시 사용) */
+    --accent: 145 50% 38%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 100% 50%;
+    /* 파괴적(경고) 색상 */
+    --destructive: 0 100% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --ring: 215 20.2% 65.1%;
+    /* 포커스/하이라이트 링 */
+    --ring: 147 90% 35%;
 
+    /* radius */
     --radius: 0.5rem;
   }
 
+  /* 다크 모드용(원하시는 경우 추가로 조정) */
   .dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
+    --background: 210 30% 10%;
+    --foreground: 210 30% 95%;
 
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
+    --muted: 210 20% 18%;
+    --muted-foreground: 210 15% 80%;
 
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 145 45% 30%;
+    --accent-foreground: 210 30% 98%;
 
-    --popover: 224 71% 4%;
-    --popover-foreground: 215 20.2% 65.1%;
+    --popover: 210 30% 10%;
+    --popover-foreground: 210 15% 80%;
 
-    --border: 216 34% 17%;
-    --input: 216 34% 17%;
+    --border: 210 20% 20%;
+    --input: 210 20% 20%;
 
-    --card: 224 71% 4%;
-    --card-foreground: 213 31% 91%;
+    --card: 210 30% 10%;
+    --card-foreground: 210 30% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 1.2%;
+    --primary: 145 50% 55%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 222.2 47.4% 11.2%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 145 45% 38%;
+    --secondary-foreground: 0 0% 100%;
 
-    --destructive: 0 63% 31%;
+    --destructive: 0 63% 40%;
     --destructive-foreground: 210 40% 98%;
 
-    --ring: 216 34% 17%;
+    --ring: 145 50% 38%;
 
     --radius: 0.5rem;
   }
@@ -80,15 +92,33 @@
       "rlig" 1,
       "calt" 1;
   }
+  /* 배경 그라디언트가 필요하시면 유지하시고, 불필요하다면 제거하세요 */
   .background-gradient {
-    background-color: #fff;
+    /* 바탕색을 살짝 그린 톤으로 */
+    background-color: hsl(136, 40%, 94%); /* #f2fdf2 정도 */
+
+    /*
+    * radial-gradient() 들의 위치/크기를 조정하면서 원하는 분위기의 그린 계열로 바꾸었습니다.
+    */
     background-image: radial-gradient(
-        at 21% 11%,
-        rgba(186, 186, 233, 0.53) 0,
+        at 20% 15%,        /* 위치 */
+        #dfdfdf,           /* 색상 */
+        transparent 55%
+      ),
+      radial-gradient(
+        at 85% 10%,
+        #e9eeeb,
         transparent 50%
       ),
-      radial-gradient(at 85% 0, hsla(46, 57%, 78%, 0.52) 0, transparent 50%),
-      radial-gradient(at 91% 36%, rgba(194, 213, 255, 0.68) 0, transparent 50%),
-      radial-gradient(at 8% 40%, rgba(251, 218, 239, 0.46) 0, transparent 50%);
+      radial-gradient(
+        at 90% 40%,
+        #e9eeeb,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 10% 60%,
+        #dfdfdf,
+        transparent 50%
+      );
   }
 }
