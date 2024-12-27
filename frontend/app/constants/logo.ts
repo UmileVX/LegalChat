@@ -1,4 +1,4 @@
-const LOGO_REDIRECT_URL = "http://www.sihm.co.kr/"
+const LOGO_REDIRECT_URL = "https://github.com/UmileVX/LegalChat"
 const LOGO_WIDTH = 40
 const LOGO_HEIGHT = 40
 
