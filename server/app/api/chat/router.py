@@ -39,7 +39,7 @@ async def chat(
             request, event_handler, response, data, background_tasks
         )
     except Exception as e:
-        logger.log_error("Error in chat engine", exc_info=True)
+        logger.log_error(f"Error in chat engine: {e}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Error in chat engine: {e}",

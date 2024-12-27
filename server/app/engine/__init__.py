@@ -1,3 +1,4 @@
+import os
 from llama_index.core import PromptTemplate
 from llama_index.core.chat_engine import CondenseQuestionChatEngine
 from llama_index.core.query_engine import TransformQueryEngine
@@ -5,6 +6,12 @@ from llama_index.core.indices.query.query_transform import HyDEQueryTransform
 
 # custom modules
 from app.engine.index import get_index
+
+from .prompts.base import BASE_SYS_PROMPT
+from .prompts.herlab import HERLAB_PROMPT
+
+
+FOR_SIHM_SVC = os.getenv("FOR_SIHM_SVC", "false").lower() == "true"
 
 
 def _use_hyde(query_engine, use_hyde: bool):
@@ -27,17 +34,11 @@ def get_custom_chat_engine(last_msg: str, chat_history: list, verbose: bool = Fa
     query_engine = index.as_query_engine()
     query_engine = _use_hyde(query_engine, use_hyde=use_hyde)
 
-    custom_prompt_str = f"""As a user, I want to know more about "{last_msg}".
-    Answer in same language as the question. If you think the question is ambiguous, please ask for clarification.
-    If you think the question is too violent/sexual/illegal, please let the user know that you can't answer it due to policy reasons.
-    """
-    custom_prompt = PromptTemplate(custom_prompt_str)
+    base_prompt = HERLAB_PROMPT if FOR_SIHM_SVC else BASE_SYS_PROMPT
 
-    # return CondensePlusContextChatEngine.from_defaults(
-    #     retriever=self.as_retriever(**kwargs),
-    #     llm=llm,
-    #     **kwargs,
-    # )
+    custom_prompt_str = f"""As a user, I want to know more about "{last_msg}".
+    {base_prompt}"""
+    custom_prompt = PromptTemplate(custom_prompt_str)
 
     chat_engine = CondenseQuestionChatEngine.from_defaults(
         query_engine=query_engine,
