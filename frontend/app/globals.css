@@ -86,6 +86,14 @@
   * {
     @apply border-border;
   }
+
+  html {
+    /* 이모지를 지원하는 폰트를 우선순위로 지정 */
+    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans",
+      "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", 
+      "Segoe UI Symbol", sans-serif;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings:

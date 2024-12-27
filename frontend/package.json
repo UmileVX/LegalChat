@@ -3,8 +3,10 @@
   "version": "0.1.1",
   "scripts": {
     "dev": "cross-env NEXT_PUBLIC_CHAT_API=http://localhost:8000/api/chat next dev",
+    "sihm_dev": "cross-env NEXT_PUBLIC_CHAT_API=http://localhost:8000/api/chat FOR_SIHM=true next dev",
     "build": "next build",
-    "local_build": "cross-env NEXT_PUBLIC_CHAT_API=http://localhost:8000/api/chat next build",
+    "local_build": "cross-env NEXT_PUBLIC_CHAT_API=http://localhost:8000/api/chat IS_LOCAL_BUILD=true next build",
+    "sihm_build": "cross-env NEXT_PUBLIC_CHAT_API=https://sihm.legalgpt.com/api/chat FOR_SIHM=true next build",
     "start": "next start",
     "lint": "next lint",
     "generate": "node app/api/chat/engine/generate.mjs"
@@ -16,16 +18,19 @@
     "next": "^14.2.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0",
     "supports-color": "^9.4.0"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^20.10.3",
     "@types/react": "^18.2.42",
     "@types/react-dom": "^18.2.17",
     "autoprefixer": "^10.4.16",
+    "cross-env": "^7.0.3",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6",
-    "typescript": "^5.3.2",
-    "cross-env": "^7.0.3"
+    "typescript": "^5.3.2"
   }
 }
