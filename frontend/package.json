@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "cross-env NEXT_PUBLIC_CHAT_API=http://localhost:8000/api/chat next dev",
     "build": "next build",
+    "local_build": "cross-env NEXT_PUBLIC_CHAT_API=http://localhost:8000/api/chat next build",
     "start": "next start",
     "lint": "next lint",
     "generate": "node app/api/chat/engine/generate.mjs"
