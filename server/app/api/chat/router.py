@@ -6,6 +6,7 @@ from app.engine import get_chat_engine, get_custom_chat_engine
 from app.engine.query_filter import generate_filters
 from app.utils.logging import Logger
 from app.utils.events import EventCallbackHandler
+from app.config import DEBUG
 
 from .response import LegalChatStreamResponse
 from .model import ChatData
@@ -13,7 +14,6 @@ from .model import ChatData
 
 chat_router = r = APIRouter()
 logger = Logger()
-
 
 @r.post("")
 async def chat(
@@ -32,7 +32,7 @@ async def chat(
             f"Creating chat engine with filters: {str(filters)}",
         )
         event_handler = EventCallbackHandler()
-        chat_engine = get_custom_chat_engine(last_message_content, messages, verbose=False)
+        chat_engine = get_custom_chat_engine(last_message_content, messages, verbose=DEBUG)
         response = chat_engine.astream_chat(last_message_content, messages)
 
         return LegalChatStreamResponse(

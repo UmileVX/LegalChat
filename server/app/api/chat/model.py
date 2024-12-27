@@ -1,4 +1,3 @@
-import logging
 import os
 from typing import Any, Dict, List, Optional
 
@@ -7,10 +6,13 @@ from llama_index.core.schema import NodeWithScore
 from pydantic import BaseModel, Field, field_validator
 from pydantic.alias_generators import to_camel
 
+# custom modules
 from app.config import DATA_DIR
 from app.services.file import DocumentFile
+from app.utils.logging import Logger
 
-logger = logging.getLogger("uvicorn")
+
+logger = Logger()
 
 
 class AnnotationFileData(BaseModel):
@@ -42,7 +44,7 @@ class AnnotationFileData(BaseModel):
                 # Construct url from file name
                 return f"File URL (instruction: do not update this file URL yourself): {url_prefix}/output/uploaded/{file.name}\n"
         else:
-            logger.warning(
+            logger.log_warning(
                 "Warning: FILESERVER_URL_PREFIX not set in environment variables. Can't use file server"
             )
             return None
@@ -94,7 +96,7 @@ class Annotation(BaseModel):
         elif self.type == "image":
             raise NotImplementedError("Use image file is not supported yet!")
         else:
-            logger.warning(
+            logger.log_warning(
                 f"The annotation {self.type} is not supported for generating context content"
             )
         return None
@@ -284,7 +286,7 @@ class SourceNodes(BaseModel):
     def get_url_from_metadata(cls, metadata: Dict[str, Any]) -> Optional[str]:
         url_prefix = os.getenv("FILESERVER_URL_PREFIX")
         if not url_prefix:
-            logger.warning(
+            logger.log_warning(
                 "Warning: FILESERVER_URL_PREFIX not set in environment variables. Can't use file server"
             )
         file_name = metadata.get("file_name")
