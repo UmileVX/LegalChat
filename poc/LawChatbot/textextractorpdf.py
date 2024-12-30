@@ -286,6 +286,12 @@ try:
     conn = psycopg2.connect(host='localhost', dbname='sihm', user=usr, password=pw, port=5432)
     cursor = conn.cursor()
 
+    sql_for_delete_table = f"""DROP TABLE IF EXISTS sihm.{table_name};"""
+    cursor.execute(sql_for_delete_table)
+    conn.commit()
+
+    conn = psycopg2.connect(host='localhost', dbname='sihm', user=usr, password=pw, port=5432)
+    cursor = conn.cursor()
     sql_for_create_table = f"""CREATE TABLE IF NOT EXISTS sihm.{table_name} (
       id integer NOT NULL,
       name character varying(32) NOT NULL,
@@ -300,7 +306,7 @@ try:
       art_num character varying(20) NOT NULL,
       art_name character varying(128) NOT NULL,
       content text NOT NULL,
-      embedding vector
+      embedding public.vector
     );"""
     cursor.execute(sql_for_create_table)
     conn.commit()

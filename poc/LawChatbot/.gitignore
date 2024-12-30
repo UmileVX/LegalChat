@@ -2,3 +2,6 @@
 
 # text files
 *.txt
+
+# csv files
+*.csv
