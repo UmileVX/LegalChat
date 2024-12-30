@@ -32,6 +32,11 @@ def get_custom_chat_engine(last_msg: str, chat_history: list, verbose: bool = Fa
         custom_prompt_str = f"""As a user, I want to know more about "{last_msg}".\n{BASE_SYS_PROMPT}"""
 
     custom_prompt = PromptTemplate(custom_prompt_str)
+
+    # context_prompt = PromptTemplate(DEFAULT_CONTEXT_PROMPT_TEMPLATE)
+    # refine_prompt = PromptTemplate(DEFAULT_CONTEXT_REFINE_PROMPT_TEMPLATE)
+    # condense_prompt = PromptTemplate(DEFAULT_CONDENSE_PROMPT_TEMPLATE)
+
     chat_engine = CondensePlusContextChatEngine.from_defaults(
         retriever,
         llm=llm,

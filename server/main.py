@@ -6,6 +6,7 @@ import os
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import llama_index.core
 
 # custom modules
 from app.api.chat.router import chat_router
@@ -16,15 +17,16 @@ from app.utils.logging import Logger
 app = FastAPI()
 logger = Logger()
 
-init_settings()
-
 # Default to 'dev' (development) if not set
 environment = os.getenv("ENVIRONMENT", "dev")
 if environment not in {"dev", "prod"}:
     environment = "dev"
 
+init_settings()
 
 if environment == "dev":
+    llama_index.core.set_global_handler("simple")
+
     logger.log_warning("Running in development mode - allowing CORS for all origins")
     app.add_middleware(
         CORSMiddleware,
