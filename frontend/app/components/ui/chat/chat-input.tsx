@@ -13,14 +13,16 @@ export interface ChatInputProps {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   isLoading: boolean;
   multiModal?: boolean;
+  disabled?: boolean;
 }
+
 
 export default function ChatInput(props: ChatInputProps) {
   return (
     <>
       <form
         onSubmit={props.handleSubmit}
-        className="flex items-start justify-between w-full max-w-5xl p-4 bg-white rounded-xl shadow-xl gap-4"
+        className="flex items-start justify-between w-full p-4 bg-white rounded-xl shadow-xl gap-4"
       >
         <input
           autoFocus
@@ -31,7 +33,7 @@ export default function ChatInput(props: ChatInputProps) {
           onChange={props.handleInputChange}
         />
         <button
-          disabled={props.isLoading}
+          disabled={props.isLoading || props.disabled}
           type="submit"
           className="p-4 text-white rounded-xl shadow-xl bg-gradient-to-r from-cyan-500 to-sky-500 disabled:opacity-50 disabled:cursor-not-allowed"
         >

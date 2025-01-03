@@ -2,7 +2,13 @@
 
 import Image from "next/image";
 
-import { LOGO_REDIRECT_URL, LOGO_HEIGHT, LOGO_WIDTH, } from "../constants/sihm_logo";
+import {
+    LOGO_REDIRECT_URL,
+    LOGO_WIDTH,
+    LOGO_HEIGHT,
+    ICON_WIDTH,
+    ICON_HEIGHT,
+} from "../constants/sihm_logo";
 import {
     doLogout,
     goToMyPage,
@@ -43,41 +49,41 @@ export default function SihmHeader() {
                     className="user_profile"
                     src="/icons/user_dropdown.png"
                     alt="user icon"
-                    width="20"
-                    height="20"
+                    width={ICON_WIDTH}
+                    height={ICON_HEIGHT}
                     priority
                 />
                 <div className="dropdown-content" id="dropdown-content">
-                    <a href="javascript:void(0)" id="email">email</a>
-                    <a href="javascript:void(0)" onClick={goToMyPage}>
+                    <a href="#!" id="email">email</a>
+                    <a href="#!" onClick={goToMyPage}>
                         <Image
                             className="account_icon"
                             src="/icons/user.png"
                             alt="account icon"
-                            width="20"
-                            height="20"
+                            width={ICON_WIDTH}
+                            height={ICON_HEIGHT}
                             priority
                         />
                         마이페이지
                     </a>
-                    <a href="javascript:void(0)" onClick={goToWorkSpace}>
+                    <a href="#!" onClick={goToWorkSpace}>
                         <Image
                             className="workplace_icon"
                             src="/icons/workplace.png"
                             alt="workplace icon"
-                            width="20"
-                            height="20"
+                            width={ICON_WIDTH}
+                            height={ICON_HEIGHT}
                             priority
                         />
                         사업장 목록
                     </a>
-                    <a href="javascript:void(0)" onClick={doLogout}>
+                    <a href="#!" onClick={doLogout}>
                         <Image
                             className="logout_icon"
                             src="/icons/logout.png"
                             alt="logout icon"
-                            width="20"
-                            height="20"
+                            width={ICON_WIDTH}
+                            height={ICON_HEIGHT}
                             priority
                         />
                         로그아웃

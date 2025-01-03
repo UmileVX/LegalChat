@@ -7,7 +7,7 @@ function goToMyPage() {
 }
 
 function goToWorkSpace() {
-    let user_id = 1; //TODO
+    let user_id = 1;
     window.location.href = `/workspaces/${user_id}`;
 }
 

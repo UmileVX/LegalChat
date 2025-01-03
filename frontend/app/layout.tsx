@@ -4,10 +4,12 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
+
 export const metadata: Metadata = {
   title: "Legal Chat",
   description: "A chat application for legal advices",
 };
+
 
 export default function RootLayout({
   children,
@@ -16,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className + " background-gradient"}>{children}</body>
     </html>
   );
 }
