@@ -100,6 +100,11 @@
       "rlig" 1,
       "calt" 1;
   }
+
+  .h-dvh-sihm {
+    height: 92vh;
+  }
+
   /* 배경 그라디언트가 필요하시면 유지하시고, 불필요하다면 제거하세요 */
   .background-gradient {
     /* 바탕색을 살짝 그린 톤으로 */

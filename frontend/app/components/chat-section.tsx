@@ -5,7 +5,6 @@ import { useMemo } from "react";
 import { insertDataIntoMessages } from "./transform";
 import { ChatInput, ChatMessages } from "./ui/chat";
 
-
 export default function ChatSection() {
   const {
     messages,
@@ -29,7 +28,7 @@ export default function ChatSection() {
   }, [messages, data]);
 
   return (
-    <div className="space-y-2 w-full h-min-[50vh]">
+    <div className="space-y-5 max-w-6xl w-full">
       <ChatMessages
         messages={transformedMessages}
         isLoading={isLoading}
