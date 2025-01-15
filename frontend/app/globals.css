@@ -101,8 +101,33 @@
       "calt" 1;
   }
 
-  .h-dvh-sihm {
-    height: 92vh;
+  @media (min-height: 800px){
+    .h-dvh-sihm, .ai_chat_css{
+      height: 92vh;
+      background-color: #f5f8f6;
+    }
+
+    .ai_chat_menu {
+      border: 1px solid #DADEE0;
+      width: 294px;
+    }
+  }
+
+  @media (max-height: 799px){
+    .h-dvh-sihm, .ai_chat_css {
+      height: 92.5vh;
+      background-color: #f5f8f6;
+    }
+
+    .ai_chat_menu {
+      border: 0.75px solid #DADEE0;
+      width: 187.5px;
+    }
+  }
+
+  .ai_chat_css {
+    display: flex;
+    width: 100%;
   }
 
   /* 배경 그라디언트가 필요하시면 유지하시고, 불필요하다면 제거하세요 */

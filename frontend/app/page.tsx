@@ -1,6 +1,7 @@
 import Header from "@/app/components/header";
 import SihmHeader from "./components/sihm-header";
 import ChatSection from "./components/chat-section";
+import MenuBar from "./components/menu-bar";
 
 
 export default function Home() {
@@ -8,8 +9,11 @@ export default function Home() {
     return (
       <>
         <SihmHeader />
-        <main className="flex h-dvh-sihm flex-col items-center gap-10 p-20 background-gradient">
-          <ChatSection />
+        <main className="flex h-dvh-sihm flex-col items-center gap-10">
+          <div className="ai_chat_css">
+            <MenuBar />
+            <ChatSection />
+          </div>
         </main>
       </>
     );

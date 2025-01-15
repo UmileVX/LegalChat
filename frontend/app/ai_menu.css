@@ -1,0 +1,109 @@
+@import url("@mdi/font/css/materialdesignicons.css");
+
+
+@media screen and (min-width: 1601px){
+    .menu_title {
+        height: 42px;
+        width: 226px;
+        color: #979797 !important;
+        margin: 7px 12px;
+        padding-left: 12px;
+        font-size: 14.9px;
+        line-height: 39px;
+    }
+
+    .menu_title_name {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    }
+
+    .subMenu_title {
+        height: 44px;
+        width: 225px;
+        color: #979797;
+        margin-right: 12px;
+        padding-right: 12px;
+        margin-left: 13px;
+        padding-left: 15px;
+        font-size: 14px;
+        line-height: 42px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .selected {
+        color: #4fb26d;
+        font-weight: bold;
+    }
+
+    .sort_icon {
+        font-size: 24px;
+        margin: 3px 10px 0 14px;
+        position: relative;
+        float: right;
+        color: #838383;
+    }
+
+    .robot_icon {
+        font-size: 20px;
+        padding-bottom: 4px;
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+        margin-right: 10px;
+    }
+
+}
+
+@media screen and (max-width: 1600px){
+    .menu_title {
+        height: 31.5px;
+        width: 169.5px;
+        color: #979797;
+        margin: 7px 9px;
+        padding-left: 8.35px;
+        font-size: 11px;
+        line-height: 26px;
+    }
+
+    .menu_title_name {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    }
+
+    .subMenu_title {
+        height: 31.5px;
+        width: 169.5px;
+        color: #979797;
+        margin-right: 11px;
+        padding-right: 11px;
+        margin-left: 11px;
+        padding-left: 11px;
+        font-size: 11px;
+        line-height: 26px;
+    }
+
+    .selected {
+        color: #4fb26d;
+        font-weight: bold;
+    }
+
+    .sort_icon {
+        font-size: 18px;
+        margin: 2px 8px 0 10px;
+        position: relative;
+        float: right;
+        color: #838383;
+    }
+
+    .robot_icon {
+        font-size: 16px;
+        padding-bottom: 4px;
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+        margin-right: 8px;
+    }
+}

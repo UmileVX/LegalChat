@@ -2,6 +2,8 @@
 
 import Image from 'next/image'
 
+import '../../../ai_chat_box.css';
+
 export interface ChatInputProps {
   /** The current value of the input */
   input?: string;
@@ -24,7 +26,7 @@ export default function ChatInput(props: ChatInputProps) {
     <>
       <form
         onSubmit={props.handleSubmit}
-        className="flex items-start justify-between w-full max-w-6xl p-4 bg-white rounded-xl shadow-xl gap-4"
+        className="flex items-start justify-between w-full p-4 bg-white rounded-xl shadow-xl gap-4 ai_chat_box"
       >
         <input
           autoFocus

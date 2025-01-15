@@ -12,6 +12,7 @@
     "generate": "node app/api/chat/engine/generate.mjs"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
     "ai": "^4.0.13",
     "dotenv": "^16.3.1",
     "llamaindex": "0.1.12",

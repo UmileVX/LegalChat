@@ -1,0 +1,15 @@
+.ai_chat_box {
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 1601px){
+    .ai_chat_box {
+        max-width: 85rem;
+    }
+}
+
+@media screen and (max-width: 1600px){
+    .ai_chat_box {
+        max-width: 72rem;
+    }
+}
