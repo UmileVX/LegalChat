@@ -39,7 +39,7 @@ export default function ChatInput(props: ChatInputProps) {
         <button
           disabled={props.isLoading || props.disabled}
           type="submit"
-          className="p-4 text-white rounded-xl shadow-xl bg-gradient-to-r from-green-500 to-green-600 disabled:opacity-50 disabled:cursor-not-allowed w-14 h-14 p-5"
+          className="text-white rounded-xl shadow-xl bg-gradient-to-r from-green-500 to-green-600 disabled:opacity-50 disabled:cursor-not-allowed w-14 h-14 p-5"
         >
           <Image
             src="/icons/send_all.png"

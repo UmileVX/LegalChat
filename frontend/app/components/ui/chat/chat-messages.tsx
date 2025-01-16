@@ -31,9 +31,17 @@ export default function ChatMessages({
     }
   };
 
+  // messages 배열의 길이가 변할 때 스크롤 이동
   useEffect(() => {
     scrollToBottom();
   }, [messages.length]);
+
+  // isLoading 상태가 false가 될 때 스크롤 이동
+  useEffect(() => {
+    if (!isLoading) {
+      scrollToBottom();
+    }
+  }, [isLoading]);
 
   return (
     <div className="w-full max-w-6xl px-10 py-8 bg-white rounded-xl shadow-xl ai_chat_box">
